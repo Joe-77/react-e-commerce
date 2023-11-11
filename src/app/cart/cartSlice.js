@@ -15,6 +15,7 @@ const cartSlice = createSlice({
 
       if (product) {
         product.quantity += 1;
+        toast.info("Increased the product quantity by one");
       } else {
         state.cart.push({
           ...action.payload,
