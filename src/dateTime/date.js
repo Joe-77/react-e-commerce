@@ -1,4 +1,4 @@
-export let countDate = new Date("Nov 31, 2023 23:59:59");
+export let countDate = new Date("Jan 31, 2024 23:59:59");
 
 export let dateNow = new Date().getTime();
 
