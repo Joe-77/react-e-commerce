@@ -9,26 +9,42 @@ import { useSelector } from "react-redux";
 import { selectCart } from "../../app/cart/cartSlice";
 
 const NavBar = ({ auth, setAuth }) => {
+  window.onscroll = () => {
+    setShowCategory(false);
+  };
+
   const [showCategory, setShowCategory] = useState(false);
 
   const category = () => {
     setShowCategory(!showCategory);
   };
 
-  const cart = useSelector(selectCart)
-
+  const cart = useSelector(selectCart);
 
   return (
     <div className="w-full h-20 flex justify-between items-center px-3 md:px-10 bg-white shadow-xl shadow-gray-400">
-      <div className="flex  items-center  gap-4">
+      <div className="flex  items-center gap-4">
         <div className="relative md:hidden">
           <BiMenu onClick={category} className="text-2xl cursor-pointer" />
           {showCategory && (
-            <ul className="category flex flex-col gap-4 absolute z-50 bg-white shadow-lg shadow-zinc-800 mt-2 p-2">
-              <Link to="/shop">shop</Link>
-              <Link to="/men">Men</Link>
-              <Link to="/women">women</Link>
-              <Link to="/kids">kids</Link>
+            <ul
+              id="lists"
+              className={`category flex flex-col gap-4 absolute top-10 ${
+                showCategory ? "left-[-11px]" : "left-[-1000px]"
+              } h-screen z-50 bg-white shadow-lg shadow-zinc-800 mt-2 py-2 px-6 duration-500`}
+            >
+              <Link onClick={() => setShowCategory(false)} to="/shop">
+                shop
+              </Link>
+              <Link onClick={() => setShowCategory(false)} to="/men">
+                Men
+              </Link>
+              <Link onClick={() => setShowCategory(false)} to="/women">
+                women
+              </Link>
+              <Link onClick={() => setShowCategory(false)} to="/kids">
+                kids
+              </Link>
             </ul>
           )}
         </div>

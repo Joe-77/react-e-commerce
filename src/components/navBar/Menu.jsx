@@ -3,13 +3,11 @@ import user from "../../images/user.png";
 import { useSignOutMutation } from "../../app/feature/api/authApi";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-// import { Logout } from "../../Auth/authentication";
 
 const Menu = ({ setAuth }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const [signOut] = useSignOutMutation();
-
 
   const click = () => {
     signOut()
@@ -26,8 +24,8 @@ const Menu = ({ setAuth }) => {
         <img className="w-full " src={user} alt="" />
       </button>
       {showMenu && (
-        <ul className=" absolute right-[-5px] flex flex-col gap-3">
-          <Link to={`/profile`}>
+        <ul className=" absolute z-[999] right-[-5px] flex flex-col gap-3">
+          <Link onClick={() => setShowMenu(false)} to={`/profile`}>
             <li className=" bg-blue-600 p-1 cursor-pointer text-sm text-white select-none">
               Profile
             </li>
